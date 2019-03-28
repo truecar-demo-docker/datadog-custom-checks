@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /httpd
 COPY httpd/ /httpd/
 
+ADD https://raw.git.corp.tc/infra/universal-build-script/master/secrets.sh .
+RUN chmod +rx ./secrets.sh
+
 COPY entrypoint.sh /
 RUN chmod a+rx entrypoint.sh
 COPY datadog.yaml /etc/datadog-agent/
