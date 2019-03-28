@@ -27,5 +27,8 @@ rm -f /etc/datadog-agent/conf.d/network.d/conf.yaml.default /etc/datadog-agent/c
 echo Copying configuration files
 (cd /myconfig && find conf.d -name \*-${SPACEPODS_ENV}.yaml -ls -exec cp --parents {} /etc/datadog-agent/ \;)
 
+# Healthcheck
+(cd /httpd && busybox httpd -p 8080)
+
 sync	# Fix for 'Text file busy' error
-exec /bin/bash
+exec agent run
