@@ -21,9 +21,11 @@ if [ -z "${SPACEPODS_ENV}" ]; then
 	export SPACEPODS_ENV="pod"
 fi
 
-mkdir -p /etc/datadog-agent/http_check.d/
-cp /mychecks/http_check.d/conf-${SPACEPODS_ENV}.yml /etc/datadog-agent/http_check.d/
+# Remove broken default checks in docker
+rm -f /etc/datadog-agent/conf.d/network.d/conf.yaml.default /etc/datadog-agent/conf.d/disk.d/conf.yaml.default
 
-chmod +x /dogstatsd
+echo Copying configuration files
+(cd /myconfig && find conf.d -name \*-${SPACEPODS_ENV}.yaml -ls -exec cp --parents {} /etc/datadog-agent/ \;)
+
 sync	# Fix for 'Text file busy' error
-exec "$@"
+exec /bin/bash

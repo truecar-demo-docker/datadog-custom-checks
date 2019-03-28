@@ -1,0 +1,6 @@
+apm_enabled: false
+use_dogstatsd: no
+process_agent_enbaled: false
+default_integration_http_timeout: 9
+allow_ipv6: no
+log_level: WARNING

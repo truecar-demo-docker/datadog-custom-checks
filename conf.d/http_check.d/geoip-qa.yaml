@@ -2,6 +2,7 @@ init_config:
 
 instances:
   - name: tc-geoip
+    min_collection_interval: 60
     url: https://tc-geoip.qa.pod.tc/internal/health
     timeout: 2
     method: get
