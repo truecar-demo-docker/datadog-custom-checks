@@ -1,7 +1,9 @@
 FROM datadog/agent:latest
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && yes | apt-get upgrade --with-new-pkgs -y  \
+  awscli \
   busybox \
+  wget \
   && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /httpd
 COPY httpd/ /httpd/
