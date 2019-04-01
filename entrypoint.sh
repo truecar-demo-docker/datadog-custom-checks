@@ -31,4 +31,5 @@ echo Copying configuration files
 (cd /httpd && busybox httpd -p 8080)
 
 sync	# Fix for 'Text file busy' error
+sleep $(((RANDOM % 60) + 10))
 exec agent run
