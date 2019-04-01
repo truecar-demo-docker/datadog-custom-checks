@@ -1,0 +1,16 @@
+{
+  "common": {
+    "resources": [
+      {
+        "actions": [
+          "ssm:GetParameter",
+          "ssm:GetParameters",
+          "ssm:GetParametersByPath"
+        ],
+        "arns": [
+          "arn:aws:ssm:us-west-2:@@AWS_ACCOUNT_ID@@:parameter/common/*"
+        ]
+      }
+    ]
+  }
+}
