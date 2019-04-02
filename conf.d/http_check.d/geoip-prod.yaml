@@ -1,0 +1,27 @@
+init_config:
+
+instances:
+  - name: tc-geoip
+    min_collection_interval: 60
+    url: https://tc-geoip.prod.pod.tc/internal/health
+    timeout: 2
+    method: get
+    content_match: 'IMOK'
+    reverse_content_match: false
+    http_response_status_code: (2|3)\d\d
+    include_content: true
+    collect_response_time: true
+    disable_ssl_validation: false
+    check_certificate_expiration: true
+    days_warning: 45
+    days_critical: 15
+    check_hostname: true
+    headers:
+      X-User-Agent: Truecar Datadog Health Chequer 0.1
+    skip_proxy: true
+    allow_redirects: false
+    stream: false
+    include_default_headers: true
+    tags:
+      - service:tc-geoip
+      - escalate:true
