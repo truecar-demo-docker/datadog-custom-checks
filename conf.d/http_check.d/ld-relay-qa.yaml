@@ -6,7 +6,7 @@ instances:
     url: https://ld-relay.qa.pod.tc/internal/health
     timeout: 2
     method: get
-    content_match: 'IMOK'
+    content_match: '"status":\s*"connected"'
     reverse_content_match: false
     http_response_status_code: (2|3)\d\d
     include_content: true
@@ -30,7 +30,7 @@ instances:
     url: https://ld-relay-redis.qa.pod.tc/internal/health
     timeout: 2
     method: get
-    content_match: 'IMOK'
+    content_match: '"status":\s*"connected"'
     reverse_content_match: false
     http_response_status_code: (2|3)\d\d
     include_content: true
