@@ -24,4 +24,4 @@ instances:
     include_default_headers: true
     tags:
       - service:tc-geoip
-      - escalate:false
+      - escalate:true

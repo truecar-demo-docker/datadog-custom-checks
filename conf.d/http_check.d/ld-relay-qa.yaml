@@ -24,7 +24,7 @@ instances:
     include_default_headers: true
     tags:
       - service:ld-relay
-      - escalate:false
+      - escalate:true
   - name: ld-relay-redis
     min_collection_interval: 60
     url: https://ld-relay-redis.qa.pod.tc/internal/health
@@ -48,4 +48,4 @@ instances:
     include_default_headers: true
     tags:
       - service:ld-relay-redis
-      - escalate:false
+      - escalate:true
