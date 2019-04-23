@@ -1,9 +1,9 @@
 init_config:
 
 instances:
-  - name: ld-relay
+  - name: launchdarkly-daemon
     min_collection_interval: 60
-    url: https://ld-relay.qa.pod.tc/internal/health
+    url: https://launchdarkly-daemon.qa.pod.tc/internal/health
     timeout: 2
     method: get
     content_match: '"status":\s*"connected"'
@@ -23,11 +23,11 @@ instances:
     stream: false
     include_default_headers: true
     tags:
-      - service:ld-relay
+      - service:launchdarkly-daemon
       - escalate:true
-  - name: ld-relay-redis
+  - name: launchdarkly-relay
     min_collection_interval: 60
-    url: https://ld-relay-redis.qa.pod.tc/internal/health
+    url: https://launchdarkly-relay.qa.pod.tc/internal/health
     timeout: 2
     method: get
     content_match: '"status":\s*"connected"'
@@ -47,5 +47,5 @@ instances:
     stream: false
     include_default_headers: true
     tags:
-      - service:ld-relay-redis
+      - service:launchdarkly-relay
       - escalate:true
