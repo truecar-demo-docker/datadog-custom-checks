@@ -1,0 +1,17 @@
+steps:
+  - label: ":docker: build and push image"
+    command: .buildkite/scripts/docker-build.sh
+    env:
+      CACHE_ID: ${CACHE_ID}
+      DOCKER_TAG: ${DOCKER_TAG}
+
+  - wait
+
+  - label: "Upload to Spacepods"
+    plugins:
+      - "https://git.corp.tc/infra/spacepods-buildkite-plugin.git#v6":
+          component_name: datadog-custom-checks
+    env:
+      IMAGE_TAG: ${IMAGE_TAG}
+      SPACEPODS_API_TOKEN: ssm-parameter:/build/common/spacepods-api-token
+
